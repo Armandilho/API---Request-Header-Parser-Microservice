@@ -20,3 +20,7 @@ app.get('/api/whoami', (req, res) => {
   return res.json({ ipaddress: req.ip, language: req.headers['accept-language'],
          software: req.headers['user-agent'] })
 });
+
+app.use(function(req, res) {
+  res.send('404: Page not Found', 404);
+});
