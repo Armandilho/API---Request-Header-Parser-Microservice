@@ -15,6 +15,8 @@ app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '../public', 'index.html'))
 );
 
-app.get('/api/whoami', (req, res) =>
-  res.json({ ipaddress: req.ip })
-);
+app.get('/api/whoami', (req, res) => {
+  console.log('REQ_HEADERS:::: ', req.headers);
+  return res.json({ ipaddress: req.ip, language: req.headers['accept-language'],
+         software: req.headers['User-Agent'] })
+});
